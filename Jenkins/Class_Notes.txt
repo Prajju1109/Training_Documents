@@ -545,17 +545,17 @@ pipeline {
 				}
 				}
             post {
-                Success {
+                success {
                   sh "echo 'Send mail on Success-deployment'"
 				  	
 					mail bcc: 's1.gmail.com', body: '"Jenkins Jobs Status ${BUILD_URL}"', cc: 's1.gmail.com', from: '', replyTo: '', subject: 'Deployment Successful', to: 's1.gmail.com'
                 }
-                Failure {
+                failure {
                   sh "echo 'Send mail on deployment Failure'"
 				  
 					mail bcc: 's1.gmail.com', body: '"Jenkins Jobs Status ${BUILD_URL}"', cc: 's1.gmail.com', from: '', replyTo: '', subject: 'Deployment Failed', to: 's1.gmail.com'
                 }
-                abort {
+                aborted {
                   sh "echo 'Send mail on deployment Aborted'"
 					mail bcc: 's1.gmail.com', body: '"Jenkins Jobs Status ${BUILD_URL}"', cc: 's1.gmail.com', from: '', replyTo: '', subject: 'Deployment Aborted', to: 's1.gmail.com'
                 }		
